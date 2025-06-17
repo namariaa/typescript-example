@@ -1,30 +1,14 @@
 import { Lanche } from "./interface";
 
-export class Salgado implements Lanche {
-    vendidoEm: string;
-    valor: number;
-    feitoPor: string;
-    dataProducao: string
-    massa: string;
-    comprar: (dinheiro: number, valor: number) => void;
+export class Empada extends Lanche {
+    condimento:string;
 
-    constructor(vendidoEm: string, feitoPor: string, dataProducao: string, comprar: (dinheiro: number, valor: number) => void, valor: number, massa: string) {
-        this.vendidoEm = vendidoEm;
-        this.feitoPor = feitoPor;
-        this.dataProducao = dataProducao;
-        this.valor = valor;
-        this.comprar = comprar;
-        this.massa = massa;
+    comprar(dinheiro: number): string {
+        return `O valor do troco foi ${dinheiro - this.valor}`;
     }
-}
-
-
-export class Empada extends Salgado {
-    sabor: string;
-    constructor(vendidoEm: string, feitoPor: string, dataProducao: string, comprar: (dinheiro: number, valor: number) => void, valor: number, massa: string, sabor: string,) {
-        super(vendidoEm, feitoPor, dataProducao, comprar, valor, massa);
-        this.sabor = sabor;
-
+    constructor(vendidoEm: string,  valor: number, feitoPor: string, dataProducao: string, recheio: string, massa: string, condimento:string) {
+        super(vendidoEm, valor, feitoPor, dataProducao, recheio, massa);
+        this.condimento = condimento;
     }
 
 }

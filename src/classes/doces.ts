@@ -1,45 +1,14 @@
-
 import { Lanche } from "./interface";
 
-export class Doce implements Lanche {
-    vendidoEm: string;
-    valor: number;
-    feitoPor: string;
-    dataProducao: string;
-    corbetura: string;
-    recheio: string;
-    comprar: (dinheiro: number, valor: number) => void;
+export class Bolo extends Lanche {
+    cobertura:string;
 
-    constructor(vendidoEm: string, feitoPor: string, dataProducao: string, corbetura: string, recheio: string, comprar: (dinheiro: number, valor: number) => void, valor: number) {
-        this.vendidoEm = vendidoEm;
-        this.feitoPor = feitoPor;
-        this.dataProducao = dataProducao;
-        this.corbetura = corbetura;
-        this.valor = valor;
-        this.recheio = recheio;
-        this.comprar = comprar;
+    comprar(dinheiro: number): string {
+        return `O valor troco era ${dinheiro - this.valor} mas como você comprou um doce, você ganhou desconto de 10% o troco ficou ${dinheiro - (this.valor - (this.valor / 10))}`;
     }
-
-}
-
-export class Sorvete extends Doce {
-    sabor: string;
-    recipiente: string;
-
-    constructor(
-        vendidoEm: string,
-        feitoPor: string,
-        dataProducao: string,
-        corbetura: string,
-        recheio: string,
-        comprar: (dinheiro: number, valor: number) => void,
-        valor: number,
-        sabor: string,
-        recipiente: string
-    ) {
-        super(vendidoEm, feitoPor, dataProducao, corbetura, recheio, comprar, valor);
-        this.sabor = sabor;
-        this.recipiente = recipiente;
+    constructor(vendidoEm: string,  valor: number, feitoPor: string, dataProducao: string, recheio: string, massa: string, cobertura:string) {
+        super(vendidoEm, valor, feitoPor, dataProducao, recheio, massa);
+        this.cobertura = cobertura;
     }
 
 }
